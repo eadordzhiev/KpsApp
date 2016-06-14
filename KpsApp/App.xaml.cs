@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +17,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.WindowsAzure.Messaging;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace KpsApp
 {
@@ -37,14 +42,16 @@ namespace KpsApp
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -76,6 +83,28 @@ namespace KpsApp
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+            }
+
+            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+            var hub = new NotificationHub("KpsApp", "Endpoint=sb://kpsapp.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=6FGeoVO2CD+iFs1Kwp1qtzHrrEvlUKFcdsN3xNWURtw=");
+            var result = await hub.RegisterNativeAsync(channel.Uri);
+
+            // Displays the registration ID so you know it was successful
+            if (result.RegistrationId == null)
+            {
+                var dialog = new MessageDialog("Registration unsuccessful");
+                await dialog.ShowAsync();
+            }
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            var e = args as ToastNotificationActivatedEventArgs;
+            if (e?.Argument == "chop")
+            {
+                var dialog = new MessageDialog("Ребята уже в пути, оставайтесь на своем месте до момента их прибытия!", "ЧОП");
+                dialog.ShowAsync();
             }
         }
 

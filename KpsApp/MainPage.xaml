@@ -6,11 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:system="using:System"
+    xmlns:collections="using:System.Collections"
     mc:Ignorable="d"
-    RequestedTheme="Dark">
+    RequestedTheme="Light">
     <Page.Resources>
         <Style x:Key="MapControlButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#33000000"/>
+            <Setter Property="Background" Value="#66000000"/>
             <Setter Property="FontFamily" Value="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets"/>
             <Setter Property="MinHeight" Value="44"/>
             <Setter Property="MinWidth" Value="36"/>
@@ -24,6 +26,25 @@
             <Setter Property="Background" Value="Transparent"/>
         </Style>
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Искать">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Find"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Проложить маршрут" Click="ButtonBase_OnClick">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#59414;" FontFamily="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Закладки">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="OutlineStar"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!--<SplitView Grid.Column="0" CompactPaneLength="48" DisplayMode="CompactOverlay" OpenPaneLength="256" PaneBackground="#FF171717">
             <SplitView.Pane>
@@ -43,7 +64,7 @@
                     <Ellipse Fill="#FF2975CC" Width="11" Height="11"/>
                 </Grid>
             </maps:MapControl>
-            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" RequestedTheme="Dark">
                 <Button Style="{StaticResource MapControlButtonStyle}" Click="ShowMyLocationButton_Click">
                     <Grid>
                         <!--<FontIcon Glyph="&#59680;" FontFamily="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets" FontSize="16"/>-->
@@ -64,6 +85,23 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+            <StackPanel x:Name="directionsPanel" Visibility="Collapsed" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Top">
+                <TextBlock Margin="10,10,10,5" Style="{ThemeResource TitleTextBlockStyle}" Text="Проложить маршрут"/>
+                <AutoSuggestBox GotFocus="DirectionsFromTextBox_OnGotFocus" x:Name="directionsFromTextBox" Margin="10,5" PlaceholderText="Откуда"/>
+                <Border Margin="10,0" Height="1" Background="{ThemeResource TextBoxBorderThemeBrush}"/>
+                <AutoSuggestBox GotFocus="DirectionsFromTextBox_OnGotFocus" x:Name="directionsToTextBox" Margin="10,5" PlaceholderText="Куда"/>
+                <CheckBox x:Name="isSafeCheckBox" Margin="10,5">Безопасный маршрут</CheckBox>
+                <Border Background="{ThemeResource AppBarBackgroundThemeBrush}">
+                    <Grid>
+                        <TextBlock Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Margin="50,0" TextLineBounds="TrimToCapHeight" Text="Проложить маршрут" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <AppBarButton Width="50" Click="ShowRouteButtonClick" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" HorizontalAlignment="Right" Height="50">
+                            <AppBarButton.Icon>
+                                <SymbolIcon Symbol="Forward"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </Grid>
+                </Border>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

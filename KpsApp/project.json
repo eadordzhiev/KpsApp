@@ -1,7 +1,9 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Azure.Mobile.Client": "2.0.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Newtonsoft.Json": "8.0.3"
+    "Newtonsoft.Json": "8.0.3",
+    "WindowsAzure.Messaging.Managed": "0.1.7.9"
   },
   "frameworks": {
     "uap10.0": {}
