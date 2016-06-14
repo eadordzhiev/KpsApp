@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpsApp", "KpsApp\KpsApp.csproj", "{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|ARM.Build.0 = Debug|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x64.ActiveCfg = Debug|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x64.Build.0 = Debug|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x64.Deploy.0 = Debug|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x86.ActiveCfg = Debug|x86
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x86.Build.0 = Debug|x86
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Debug|x86.Deploy.0 = Debug|x86
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|ARM.ActiveCfg = Release|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|ARM.Build.0 = Release|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|ARM.Deploy.0 = Release|ARM
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x64.ActiveCfg = Release|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x64.Build.0 = Release|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x64.Deploy.0 = Release|x64
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x86.ActiveCfg = Release|x86
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x86.Build.0 = Release|x86
+		{BB482BA2-EA6D-4C3F-88D8-F2E032364D3C}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

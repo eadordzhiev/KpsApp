@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="KpsApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KpsApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    RequestedTheme="Dark">
+    <Page.Resources>
+        <Style x:Key="MapControlButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#33000000"/>
+            <Setter Property="FontFamily" Value="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets"/>
+            <Setter Property="MinHeight" Value="44"/>
+            <Setter Property="MinWidth" Value="36"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="SplitViewButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--<SplitView Grid.Column="0" CompactPaneLength="48" DisplayMode="CompactOverlay" OpenPaneLength="256" PaneBackground="#FF171717">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button Style="{StaticResource SplitViewButtonStyle}" FontSize="20" Content="&#xE700;"/>
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Content="&#59392;"/>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                
+            </SplitView.Content>
+        </SplitView>-->
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <maps:MapControl Grid.Column="1" x:Name="mapControl">
+                <Grid x:Name="mePoiControl" Margin="-11.5,-11.5,0,0"  Visibility="Collapsed">
+                    <Ellipse Fill="Transparent" Stroke="Black" StrokeThickness="3" Width="23" Height="23"/>
+                    <Ellipse Fill="#FF2975CC" Width="11" Height="11"/>
+                </Grid>
+            </maps:MapControl>
+            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MapControlButtonStyle}" Click="ShowMyLocationButton_Click">
+                    <Grid>
+                        <!--<FontIcon Glyph="&#59680;" FontFamily="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets" FontSize="16"/>-->
+                        <FontIcon Glyph="&#59406;" FontFamily="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets" FontSize="16"/>
+                        <FontIcon Glyph="&#59431;" FontFamily="/Assets/Fonts/MapsMDL2.1.54.ttf#Maps MDL2 Assets" FontSize="16"/>
+                    </Grid>
+                </Button>
+                <Button Content="&#59422;" Style="{StaticResource MapControlButtonStyle}"/>
+                <Button Content="&#59152;" Style="{StaticResource MapControlButtonStyle}" Click="ZoomInButton_Click"/>
+                <Button Content="&#59192;" Style="{StaticResource MapControlButtonStyle}" Click="ZoomOutButton_Click"/>
+            </StackPanel>
+            <Rectangle Grid.Column="1" Width="200" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="Red" Offset="1"/>
+                        <GradientStop Color="Yellow" Offset="0.5"/>
+                        <GradientStop Color="Green" Offset="0"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+    </Grid>
+</Page>
