@@ -27,7 +27,7 @@
         </Style>
     </Page.Resources>
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar RequestedTheme="Dark" Background="#FF00A78D">
             <AppBarButton Label="Искать">
                 <AppBarButton.Icon>
                     <SymbolIcon Symbol="Find"/>
@@ -46,23 +46,9 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<SplitView Grid.Column="0" CompactPaneLength="48" DisplayMode="CompactOverlay" OpenPaneLength="256" PaneBackground="#FF171717">
-            <SplitView.Pane>
-                <StackPanel>
-                    <Button Style="{StaticResource SplitViewButtonStyle}" FontSize="20" Content="&#xE700;"/>
-                    <Button Style="{StaticResource SplitViewButtonStyle}" Content="&#59392;"/>
-                </StackPanel>
-            </SplitView.Pane>
-            <SplitView.Content>
-                
-            </SplitView.Content>
-        </SplitView>-->
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <maps:MapControl Grid.Column="1" x:Name="mapControl">
-                <Grid x:Name="mePoiControl" Margin="-11.5,-11.5,0,0"  Visibility="Collapsed">
-                    <Ellipse Fill="Transparent" Stroke="Black" StrokeThickness="3" Width="23" Height="23"/>
-                    <Ellipse Fill="#FF2975CC" Width="11" Height="11"/>
-                </Grid>
+                <Image x:Name="mePoiControl" Height="30" Stretch="Uniform" Source="Assets/MePoi.png" Margin="-11,-37,0,0" Visibility="Collapsed"/>
             </maps:MapControl>
             <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" RequestedTheme="Dark">
                 <Button Style="{StaticResource MapControlButtonStyle}" Click="ShowMyLocationButton_Click">
@@ -76,17 +62,8 @@
                 <Button Content="&#59152;" Style="{StaticResource MapControlButtonStyle}" Click="ZoomInButton_Click"/>
                 <Button Content="&#59192;" Style="{StaticResource MapControlButtonStyle}" Click="ZoomOutButton_Click"/>
             </StackPanel>
-            <Rectangle Grid.Column="1" Width="200" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Color="Red" Offset="1"/>
-                        <GradientStop Color="Yellow" Offset="0.5"/>
-                        <GradientStop Color="Green" Offset="0"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
             <StackPanel x:Name="directionsPanel" Visibility="Collapsed" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Top">
-                <TextBlock Margin="10,10,10,5" Style="{ThemeResource TitleTextBlockStyle}" Text="Проложить маршрут"/>
+                <TextBlock Margin="10,10,10,5" Style="{ThemeResource TitleTextBlockStyle}" Text="Маршруты"/>
                 <AutoSuggestBox GotFocus="DirectionsFromTextBox_OnGotFocus" x:Name="directionsFromTextBox" Margin="10,5" PlaceholderText="Откуда"/>
                 <Border Margin="10,0" Height="1" Background="{ThemeResource TextBoxBorderThemeBrush}"/>
                 <AutoSuggestBox GotFocus="DirectionsFromTextBox_OnGotFocus" x:Name="directionsToTextBox" Margin="10,5" PlaceholderText="Куда"/>
